@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link Bio • kudomczz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            font-family: 'Inter', -apple-system, sans-serif;
+            padding: 1.5rem;
+            cursor: pointer;
+        }
+
+        .card {
+            max-width: 400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 48px;
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .name {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.2rem;
+        }
+
+        .bio {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .role {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 2.2rem;
+        }
+        .role i {
+            color: #a78bfa;
+        }
+
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 0.9rem 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+        .link-item i:first-child {
+            font-size: 1.4rem;
+            width: 28px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .link-item span {
+            flex: 1;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        .link-item .arrow {
+            color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        .link-item:hover .arrow {
+            color: #a78bfa;
+            transform: translateX(4px);
+        }
+
+        /* Màu sắc riêng cho từng mạng */
+        .link-item.tg i:first-child { color: #26A5E4; }
+        .link-item.yt i:first-child { color: #FF0000; }
+        .link-item.tt i:first-child { color: #00f2ea; }
+        .link-item.dc i:first-child { color: #5865F2; }
+        .link-item.fb i:first-child { color: #0084ff; }
+
+        .footer-note {
+            margin-top: 2.2rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+        }
+        .footer-note i {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Nút điều khiển nhạc */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 40px;
+            padding: 10px 16px;
+            color: #fff;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 999;
+        }
+        .music-control:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .music-control i {
+            font-size: 1.2rem;
+            color: #a78bfa;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 2rem 1.2rem; }
+            .name { font-size: 2rem; }
+            .link-item { padding: 0.8rem 1.2rem; }
+            .link-item span { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nhạc nền với link của bạn -->
+<audio id="bg-music" loop preload="auto">
+    <source src="https://electrical-amber-yifdnp11.edgeone.dev/854d0ee27c3d513a558602c8bf94252f.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Nút điều khiển nhạc -->
+<div class="music-control" id="musicToggle">
+    <i class="fas fa-music"></i>
+    <span id="musicStatus">🔇 Click để bật nhạc</span>
+</div>
+
+<div class="card">
+    <div class="name">Kudomczz</div>
+    <div class="bio">✨ chỉ jop ko bóp cu ✨</div>
+    <div class="role"><i class="fas fa-code"></i> Developer • Creator</div>
+
+    <div class="link-list">
+        <a href="https://t.me/84817352499" target="_blank" class="link-item tg">
+            <i class="fab fa-telegram-plane"></i>
+            <span>Telegram</span>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+        <a href="https://youtube.com/@kudomczz?si=y9ldp4zdttja0L0C" target="_blank" class="link-item yt">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+        <a href="https://www.tiktok.com/@kudomczxzxzxzxxxzcxxzxzx?_r=1&_t=ZS-985LXC46YgG" target="_blank" class="link-item tt">
+            <i class="fab fa-tiktok"></i>
+            <span>TikTok</span>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+        <a href="https://discord.gg/pDQbewCC5" target="_blank" class="link-item dc">
+            <i class="fab fa-discord"></i>
+            <span>Discord (kudomczz)</span>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+        <a href="https://www.facebook.com/share/19T4skT9P8/" target="_blank" class="link-item fb">
+            <i class="fab fa-facebook-messenger"></i>
+            <span>Facebook</span>
+            <i class="fas fa-chevron-right arrow"></i>
+        </a>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-circle" style="color: #a78bfa; font-size: 6px;"></i> online
+    </div>
+</div>
+
+<script>
+    (function() {
+        const audio = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicStatus = document.getElementById('musicStatus');
+
+        function playMusic() {
+            audio.play().then(() => {
+                musicStatus.textContent = '🎵 Đang phát';
+                musicToggle.querySelector('i').className = 'fas fa-volume-up';
+            }).catch(() => {
+                musicStatus.textContent = '⚠️ Nhấn để phát';
+            });
+        }
+
+        function toggleMusic() {
+            if (audio.paused) {
+                playMusic();
+            } else {
+                audio.pause();
+                musicStatus.textContent = '⏸️ Tạm dừng';
+                musicToggle.querySelector('i').className = 'fas fa-music';
+            }
+        }
+
+        musicToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMusic();
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.music-control')) return;
+            if (audio.paused) {
+                playMusic();
+            }
+        });
+
+        // Đặt âm lượng vừa phải
+        audio.volume = 0.3;
+
+        // Thử phát khi load (có thể bị chặn)
+        window.addEventListener('load', function() {
+            audio.play().then(() => {
+                musicStatus.textContent = '🎵 Đang phát';
+                musicToggle.querySelector('i').className = 'fas fa-volume-up';
+            }).catch(() => {
+                musicStatus.textContent = '🔇 Click để bật nhạc';
+            });
+        });
+
+        audio.addEventListener('ended', function() {
+            // loop sẽ tự lặp lại
+        });
+
+    })();
+</script>
+
+</body>
+  </html>
